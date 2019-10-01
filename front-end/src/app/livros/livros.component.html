@@ -1,0 +1,69 @@
+<!-- table -->
+<h3 class="text-center">Livros Cadastrados</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Lançamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let livro of livros">
+            <th scope="row">{{livro.id_livro}}</th>
+            <td>{{livro.nome}}</td>
+            <td>{{livro.autor}}</td>
+            <td>{{livro.lancamento}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="text-right">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adicionar">Adicionar</button>
+</div>
+
+<!-- modal -->
+<div id="modal" class="modal fade" id="adicionar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar novo livro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input [(ngModel)]="livro.nome" type="text" class="form-control" id="nome"
+                        placeholder="Insira o nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="autor">Autor</label>
+                    <select [(ngModel)]="livro.autor" id="autor" class="custom-select">
+                        <option selected>Selecione o autor</option>
+                        <option value="1">George R.R. Martin</option>
+                        <option value="2">J. K. Rowling</option>
+                        <option value="3">Friedrich Nietzsche</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lancamento">Lançamento</label>
+                    <input [(ngModel)]="livro.lancamento" type="date" class="form-control" id="lancamento"
+                        placeholder="Insira o lançamento">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="salvar(livro)">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->

@@ -1,0 +1,12 @@
+CREATE DATABASE db_livros;
+
+USE db_livros;
+
+CREATE TABLE tb_livros (
+	id_livro INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(255) NOT NULL,
+	autor VARCHAR(255) NOT NULL,
+	lancamento DATE NOT NULL,
+	createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL
+);
