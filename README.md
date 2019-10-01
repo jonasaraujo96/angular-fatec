@@ -1,6 +1,6 @@
 # angular-fatec
 
-Como inicializar:
+Como inicializar:<br>
   1º Crie a estrutura do banco como no arquivo "estrutura.sql"
   2º Execute o comando "npm install" na pasta back-end e front-end
   3º Mude o usuário e senha do banco no arquivo back-end/db.js
