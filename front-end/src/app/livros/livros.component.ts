@@ -9,9 +9,15 @@ import { LivrosService } from './../services/livros/livros.service';
 export class LivrosComponent implements OnInit {
 
   public livro = {
-    nome: null,
-    autor: null,
-    lancamento: null
+    liv_dtcadastro: null,
+    liv_titulo: null,
+    liv_edicao: null,
+    aut_nome: null,
+    liv_ano: null,
+    liv_ativoinativo: null,
+    liv_isbn: null,
+    edt_codigo: null,
+    aut_codigo: null
   };
 
   public livros: any;

@@ -1,7 +1,7 @@
 'use strict'
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('db_livros', 'root', '123456', {
+const sequelize = new Sequelize('dados20192n', 'donation', '123456', {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
