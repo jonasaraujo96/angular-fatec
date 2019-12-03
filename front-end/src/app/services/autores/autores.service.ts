@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
 })
-export class LivrosService {
+export class AutoresService {
 
   constructor(private http: HttpClient) { }
 
-  async salvar(livro) {
+  async salvar(autor) {
     try {
-      const resposta = this.http.post('http://localhost:3000/livros/criar', livro).toPromise();
+      const resposta = this.http.post('http://localhost:3000/autores/criar', autor).toPromise();
       return resposta
     } catch (erro) {
       console.error(erro.message)
@@ -19,25 +19,25 @@ export class LivrosService {
 
   async listar() {
     try {
-      const resposta = await this.http.get('http://localhost:3000/livros/listar').toPromise();
+      const resposta = await this.http.get('http://localhost:3000/autores/listar').toPromise();
       return resposta;
     } catch (erro) {
       console.error(erro.message)
     }
   }
 
-  async deletar(livro) {
+  async deletar(autor) {
     try {
-      const resposta = await this.http.post('http://localhost:3000/livros/deletar', livro).toPromise();
+      const resposta = await this.http.post('http://localhost:3000/autores/deletar', autor).toPromise();
       return resposta;
     } catch (erro) {
       console.error(erro.message)
     }
   }
 
-  async atualizar(livro) {
+  async atualizar(autor) {
     try {
-      const resposta = await this.http.patch('http://localhost:3000/livros/atualizar', livro).toPromise();
+      const resposta = await this.http.patch('http://localhost:3000/autores/atualizar', autor).toPromise();
       return resposta;
     } catch (erro) {
       console.error(erro.message)

@@ -26,6 +26,11 @@ app.use(function (req, res, next) {
 });
 
 const livros = require('./../src/routes/livros');
+const autores = require('./../src/routes/autores');
+const editoras = require('./../src/routes/editoras');
+
 app.use('/livros', livros);
+app.use('/autores', autores);
+app.use('/editoras', editoras);
 
 module.exports = app;

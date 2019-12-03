@@ -1,4 +1,4 @@
-const repository = require('../repository/livros');
+const repository = require('../repository/autores');
 
 exports.criar = async (req, res) => {
     try {

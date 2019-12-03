@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/livros');
+const controller = require('../controllers/autores');
 
 router.get('/listar', controller.listar);
 router.post('/criar', controller.criar);

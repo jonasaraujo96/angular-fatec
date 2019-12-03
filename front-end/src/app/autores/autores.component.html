@@ -1,0 +1,83 @@
+<!-- table -->
+<h3 class="text-center">Autores Cadastradas</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">aut_nome</th>
+            <th scope="col">aut_apelido</th>
+            <th scope="col">aut_email</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let autor of autores">
+            <th scope="row">{{autor.aut_codigo}}</th>
+            <td>{{autor.aut_nome}}</td>
+            <td>{{autor.aut_apelido}}</td>
+            <td>{{autor.aut_email}}</td>
+            <td>
+                <fa-icon (click)="editar(autor)" data-toggle="modal" data-target="#adicionar" [icon]="faEdit">
+                </fa-icon>
+                <fa-icon (click)="deletar(autor)" [icon]="faTrash"></fa-icon>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="text-right">
+    <button (click)="adicionar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#adicionar">Adicionar</button>
+</div>
+
+<!-- modal -->
+<div id="modal" class="modal fade" id="adicionar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Autor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input [(ngModel)]="autor.aut_nome" type="text" class="form-control" id="nome"
+                        placeholder="Insira o nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="apelido">Apelido</label>
+                    <input [(ngModel)]="autor.aut_apelido" type="text" class="form-control" id="apelido"
+                        placeholder="Insira o apelido">
+                </div>
+
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <input [(ngModel)]="autor.aut_sexo" type="text" class="form-control" id="sexo"
+                        placeholder="Insira o sexo">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input [(ngModel)]="autor.aut_telefone" type="text" class="form-control" id="telefone"
+                        placeholder="Insira o telefone">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input [(ngModel)]="autor.aut_email" type="text" class="form-control" id="email"
+                        placeholder="Insira o email">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="salvar(autor)">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->

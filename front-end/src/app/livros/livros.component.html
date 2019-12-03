@@ -6,6 +6,7 @@
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Autor</th>
+            <th scope="col">Editora</th>
             <th scope="col">Lançamento</th>
             <th scope="col"></th>
         </tr>
@@ -15,13 +16,17 @@
             <th scope="row">{{livro.liv_codigo}}</th>
             <td>{{livro.liv_titulo}}</td>
             <td>{{livro.aut_nome}}</td>
+            <td>{{livro.edt_nome}}</td>
             <td>{{livro.liv_ano}}</td>
-            <td></td>
+            <td>
+                <fa-icon (click)="editar(livro)" data-toggle="modal" data-target="#adicionar" [icon]="faEdit"></fa-icon>
+                <fa-icon (click)="deletar(livro)" [icon]="faTrash"></fa-icon>
+            </td>
         </tr>
     </tbody>
 </table>
 <div class="text-right">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adicionar">Adicionar</button>
+    <button (click)="adicionar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#adicionar">Adicionar</button>
 </div>
 
 <!-- modal -->
@@ -30,7 +35,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Adicionar novo livro</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Livro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -45,11 +50,17 @@
 
                 <div class="form-group">
                     <label for="autor">Autor</label>
-                    <select [(ngModel)]="livro.aut_nome" id="autor" class="custom-select">
+                    <select [(ngModel)]="livro.aut_codigo" id="autor" class="custom-select">
                         <option selected>Selecione o autor</option>
-                        <option value="1">George R.R. Martin</option>
-                        <option value="2">J. K. Rowling</option>
-                        <option value="3">Friedrich Nietzsche</option>
+                        <option *ngFor="let autor of autores" value="{{autor.aut_codigo}}">{{autor.aut_nome}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="autor">Editora</label>
+                    <select [(ngModel)]="livro.edt_codigo" id="editora" class="custom-select">
+                        <option selected>Selecione a editora</option>
+                        <option *ngFor="let editora of editoras" value="{{editora.edt_codigo}}">{{editora.edt_nome}}</option>
                     </select>
                 </div>
 
@@ -57,6 +68,12 @@
                     <label for="lancamento">Lançamento</label>
                     <input [(ngModel)]="livro.liv_ano" type="date" class="form-control" id="lancamento"
                         placeholder="Insira o lançamento">
+                </div>
+
+                <div class="form-group">
+                    <label for="edicao">Edição</label>
+                    <input [(ngModel)]="livro.liv_edicao" type="text" class="form-control" id="edicao"
+                        placeholder="Insira a edição">
                 </div>
 
             </div>
